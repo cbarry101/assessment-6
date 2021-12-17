@@ -4,16 +4,17 @@ const app = express()
 const {bots, playerRecord} = require('./data')
 const {shuffleArray} = require('./utils')
 
-app.use(express.json())
 
 const Rollbar = require('rollbar')
 const rollbar = new Rollbar({
-  accessToken: '5fa8c0edc0c64bb291e194b5a2415955',
-  captureUncaught: true,
-  captureUnhandledRejections: true,
+    accessToken: '5fa8c0edc0c64bb291e194b5a2415955',
+    captureUncaught: true,
+    captureUnhandledRejections: true,
 })
 
-//I think this is for question 1, i'm already a little lost though :/
+app.use(express.json())
+
+
 app.get('/', function(req,res) {
     res.sendFile(path.join(__dirname, './public/index.html'))
     rollbar.info('HTML loaded successfully.')
