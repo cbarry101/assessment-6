@@ -27,9 +27,10 @@ test('Clicking draw button displays the div with id "choices"', async () => {
     const displayed = await checkDivId.isDisplayed()
     expect(displayed).toBe(true)
 })
-test('Clicking on the duel button adds bots to choose from', async () => {
-    await driver.findElement(By.css('#duel')).click()
+test('Clicking on the draw button adds bots to choose from', async () => {
+    await driver.findElement(By.css('#draw')).click()
     await driver.sleep(3000)
+    
     const checkBots = await driver.findElements(By.css('.bot-card outline'))
     expect(checkBots).toHaveLength(5)
 })
@@ -42,7 +43,7 @@ test('Add to duo button displays player-id div', async() => {
     await driver.findElement(By.className('bot-btn')).click()
     await driver.sleep(3000)
 
-    const div = await driver.findElement(By.id('player-id'))
+    const div = await driver.findElement(By.id('player-duo'))
     const displayed = await div.isDisplayed()
     expect(displayed).toBe(true)
 })

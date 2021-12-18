@@ -18,7 +18,7 @@ app.use(express.json())
 app.get('/', function(req,res) {
     res.sendFile(path.join(__dirname, './public/index.html'))
     rollbar.info('HTML loaded successfully.')
-    rollbar.warning('User loaded HTML')
+    //rollbar.warning('User loaded HTML')r
 })
 app.get("/styles", function(req,res) {
     res.sendFile(path.join(__dirname, './public/index.css'))
@@ -34,7 +34,7 @@ app.get('/api/robots', (req, res) => {
     } catch (error) {
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
-        rollbar.error('Something went wrong getting bots!!!')
+        rollbar.critical('Something went wrong getting bots!!!')
     }
 })
 
@@ -47,6 +47,7 @@ app.get('/api/robots/five', (req, res) => {
         rollbar.log('Successfully got five bots!')
     } catch (error) {
         console.log('ERROR GETTING FIVE BOTS', error)
+        rollbar.critical('Error getting robots')
         res.sendStatus(400)
     }
 })
